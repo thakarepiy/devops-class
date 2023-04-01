@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class docker {
     @GetMapping("/docker")
     public String getData(){
-        return "Please restart your learning for docker";
+        return "Please restart your learning of docker";
     }
 }

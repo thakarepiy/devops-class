@@ -68,7 +68,7 @@ pipeline {
                          docker tag devops-class:latest 559220132560.dkr.ecr.ap-south-1.amazonaws.com/devops-class:latest
                          echo "Tagging the Docker Image: Completed"
                          echo "Push Docker Image to ECR : In Progress"
-                         docker push 559220132560.dkr.ecr.ap-south-1.amazonaws.com/travelbooking-ms:latest
+                         docker push 559220132560.dkr.ecr.ap-south-1.amazonaws.com/devops-class:latest
                          echo "Push Docker Image to ECR : Completed"
                          """
                          }

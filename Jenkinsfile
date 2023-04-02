@@ -76,12 +76,19 @@ pipeline {
                    }
         }
 
-        stage('Upload docker image to Nexus') {
-                            steps {
-                                echo 'Docker Image Upload Started'
-                                sh 'java -version'
-                                echo 'Docker Image Upload Done'
-                            }
+
+        stage('Upload the docker Image to Nexus') {
+           steps {
+              script {
+                 withCredentials([usernamePassword(credentialsId: 'nexus-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
+                 sh 'docker login http://65.0.7.208:8085/repository/devops-class/ -u admin -p ${PASSWORD}'
+                 echo "Push Docker Image to Nexus : In Progress"
+                 sh 'docker tag devops-class 65.0.7.208:8085/devops-class:latest'
+                 sh 'docker push 65.0.7.208:8085/devops-class'
+                 echo "Push Docker Image to Nexus : Completed"
+                 }
+              }
+            }
         }
     }
 }
